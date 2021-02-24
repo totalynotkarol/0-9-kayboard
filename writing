@@ -1,0 +1,57 @@
+#define s1 11
+#define s2 10
+#define s3 9
+
+#define r1 7
+#define r2 6
+#define r3 5
+#define r4 4
+
+void setup()
+{
+  Serial.begin(9600);
+  Serial.print("stiskni tlacitko");
+  pinMode(s1, OUTPUT);
+  pinMode(s2, OUTPUT);
+  pinMode(s3, OUTPUT);
+
+  pinMode(r1,INPUT_PULLUP);
+  pinMode(r2, INPUT_PULLUP);
+  pinMode(r3, INPUT_PULLUP);
+  pinMode(r4, INPUT_PULLUP);
+
+}
+void loop()
+{
+  //prvni faze
+  digitalWrite(s1, 0); 
+  digitalWrite(s2, 1);
+  digitalWrite(s3, 1);
+
+  if (digitalRead(r1)==0){Serial.println("1");while (digitalRead(r1)==0){};}
+  if (digitalRead(r2)==0){Serial.println("4");while (digitalRead(r2)==0){};}
+  if (digitalRead(r3)==0){Serial.println("7");while (digitalRead(r3)==0){};}
+  if (digitalRead(r4)==0){Serial.println("*");while (digitalRead(r4)==0){};}
+ 
+    //druha faze
+  digitalWrite(s1, 1); 
+  digitalWrite(s2, 0);
+  digitalWrite(s3, 1);
+
+  if (digitalRead(r1)==0){Serial.println("2");while (digitalRead(r1)==0){};}
+  if (digitalRead(r2)==0){Serial.println("5");while (digitalRead(r2)==0){};}
+  if (digitalRead(r3)==0){Serial.println("8");while (digitalRead(r3)==0){};}
+  if (digitalRead(r4)==0){Serial.println("0");while (digitalRead(r4)==0){};}
+  
+    //treti faze
+  digitalWrite(s1, 1); 
+  digitalWrite(s2, 1);
+  digitalWrite(s3, 0);
+
+  if (digitalRead(r1)==0){Serial.println("3");while (digitalRead(r1)==0){};}
+  if (digitalRead(r2)==0){Serial.println("6");while (digitalRead(r2)==0){};}
+  if (digitalRead(r3)==0){Serial.println("9");while (digitalRead(r3)==0){};}
+  if (digitalRead(r4)==0){Serial.println("#");while (digitalRead(r4)==0){};}
+	
+
+}
